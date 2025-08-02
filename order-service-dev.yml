@@ -5,9 +5,9 @@ server:
   message: hello from dev environment!
 spring:
   datasoource:
-    url: jdbc:h2:mem:orderdb
+    url: jdbc:h2:mem:orderdb_dev
     username: root
-    password: root
+    password: 1080
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
