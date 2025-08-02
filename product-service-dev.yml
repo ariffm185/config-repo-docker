@@ -2,10 +2,10 @@ global:
   message: welcome to product service!
 server:
   port: 8082
-  message: Hello from prod environment!
+  message: Hello from dev environment!
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/prod_master
+    url: jdbc:mysql://localhost:3306/product_master
     username: root
     password: 1080
     driver-class-name: com.mysql.cj.jdbc.Driver
