@@ -1,0 +1,18 @@
+global:
+  message: welcome to customer service!
+server:
+  port: 8081
+  message: Hello from prod environment!
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/customerdb_prod
+    username: root
+    password: 1080
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    
