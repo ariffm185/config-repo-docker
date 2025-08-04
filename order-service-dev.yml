@@ -1,21 +1,56 @@
 global:
   message: welcome to order-service!
+  
 server:
   port: 8083
   message: hello from dev environment!
-spring:
-  datasoource:
-    url: jdbc:h2:mem:orderdb_dev
+
+spring:  
+  application:
+    name: order-service
+  
+  datasource:
+    url: jdbc:h2:mem:ordersdb_dev
+    driver-class-name: org.h2.Driver
     username: root
     password: 1080
-    driver-class-name: org.h2.Driver
+    
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.H2Dialect
+
   h2:
     console:
       enabled: true
       path: /h2-console
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      customerServiceCB:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+      productServiceCB:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
