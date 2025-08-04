@@ -1,18 +1,52 @@
 global:
   message: welcome to order service!
+  
 server:
   port: 8083
   message: Hello from prod environment!
+
 spring:
+  application:
+    name: order-service  
+    
   datasource:
-    url: jdbc:mysql://localhost:3306/orderdb_prod
+    url: jdbc:mysql://mysql:3306/ordersdb_prod
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 1080
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    open-in-view: false
     database-platform: org.hibernate.dialect.MySQL8Dialect
-    
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka/
+
+logging:
+  level:
+    org.springframework.web: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      customerServiceCB:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+      productServiceCB:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
