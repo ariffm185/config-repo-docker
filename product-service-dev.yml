@@ -6,6 +6,9 @@ server:
   message: hello from dev environment!
   
 spring:
+  application:
+    name: product-service
+    
   datasoource:
     url: jdbc:h2:mem:productdb_dev
     username: root
