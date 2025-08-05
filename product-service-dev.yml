@@ -1,21 +1,42 @@
 global:
   message: welcome to product-service!
+  
 server:
   port: 8082
   message: hello from dev environment!
+  
 spring:
   datasoource:
     url: jdbc:h2:mem:productdb_dev
     username: root
     password: 1080
     driver-class-name: org.h2.Driver
+    
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    open-in-view: false
     database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        format_sql: true
   h2:
     console:
       enabled: true
       path: /h2-console
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 
