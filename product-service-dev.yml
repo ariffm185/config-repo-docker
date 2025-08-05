@@ -8,9 +8,9 @@ server:
 spring:
   application:
     name: product-service
-    
-  datasoource:
-    url: jdbc:h2:mem:productdb_dev
+
+  datasource: 
+    url: jdbc:h2:mem:productdb_dev;
     username: root
     password: 1080
     driver-class-name: org.h2.Driver
@@ -24,6 +24,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
   h2:
     console:
       enabled: true
@@ -42,4 +43,3 @@ management:
   endpoint:
     health:
       show-details: always
-
