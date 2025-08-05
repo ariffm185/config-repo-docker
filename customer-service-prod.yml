@@ -1,18 +1,40 @@
 global:
-  message: welcome to customer service!
+  message: welcome to customer-service (prod)!
+
 server:
   port: 8081
-  message: Hello from prod environment!
+  message: hello from prod environment!
+
 spring:
+  application:
+    name: customer-service
+
   datasource:
     url: jdbc:mysql://localhost:3306/customerdb_prod
     username: root
     password: 1080
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     open-in-view: false
     database-platform: org.hibernate.dialect.MySQL8Dialect
-    
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
