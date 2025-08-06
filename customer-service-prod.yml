@@ -10,7 +10,7 @@ spring:
     name: customer-service
 
   datasource:
-    url: jdbc:mysql://localhost:3306/customerdb_prod
+    url: jdbc:mysql://mysql-customer:3306/customerdb_prod
     username: root
     password: 1080
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -28,7 +28,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discovery-service:8761/eureka/
 
 management:
   endpoints:
