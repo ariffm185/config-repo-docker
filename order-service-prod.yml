@@ -10,7 +10,7 @@ spring:
     name: order-service  
     
   datasource:
-    url: jdbc:mysql://mysql:3306/ordersdb_prod
+    url: jdbc:mysql://mysql-order:3306/ordersdb_prod
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 1080
